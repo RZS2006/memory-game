@@ -1,0 +1,186 @@
+/* --- Memory Game --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: rgb(69, 238, 111);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw;
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Main Container --- */
+
+.main-container {
+    width: 100%;
+    height: 100%;
+}
+
+    /* Score Container */
+
+    .score-container {
+        width: 100%;
+        min-height: 12rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 3rem;
+    }
+
+    .player-container {
+        width: 24rem;
+        height: 7rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .player-container.active {
+        background-color: var(--primary-color);
+    }
+
+    .player-container-name {
+        font-size: 2rem;
+        margin: 1rem;
+        color: rgb(46, 46, 46);
+    }
+
+    .player-container-score {
+        font-size: 3rem;
+        margin: 1rem;
+    }
+
+    .result-container {
+        height: 7rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+        background-color: var(--primary-color);
+    }
+
+    .result {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+
+    /* Board Container */
+
+    .board-container {
+        background-color: rgb(172, 238, 159);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        padding: 6rem;
+    }
+
+    .card {
+        margin: 1rem;
+        height: 200px;
+        position: relative;
+    }
+
+    .card.matched > .card-back {
+        border: rgb(0, 139, 0) 4px solid;
+    }
+    
+    .card.flipped > .card-front {
+        transform: perspective(800px) rotateY(-180deg);
+    }
+
+    .card.flipped  > .card-back {
+        transform: perspective(800px) rotateY(0deg);
+    }
+
+    .card-front, .card-back {
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        position: absolute;
+        transition: transform 0.4s;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 0.8rem;
+        padding: 2rem;
+    }
+
+    .card-front {
+        transform: perspective(800px) rotateY(0deg);
+        background-color: var(--primary-color);
+    }
+
+    .card-back {
+        transform: perspective(800px) rotateY(180deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        background-color: white;
+    }
+
+/* Menu */
+  
+.menu-container {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-box-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-box {
+    background-color: rgba(255, 255, 255);
+    padding: 4rem;
+    height: 30rem;
+    width: 40rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-box-heading {
+    font-size: 4rem;
+    margin-bottom: 3.2rem;
+    text-align: center;
+}
+
+.start-game-btn {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2.4rem;
+    font-size: 2rem;
+}
+
+.start-game-btn:hover {
+    background-color: rgb(55, 211, 94);
+    transition: 0.2s;
+}
